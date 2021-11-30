@@ -1,0 +1,23 @@
+import sqlite3
+conn = sqlite3.connect(r"D:\sqlite-tools-win32-x86-3370000\sqlite-tools-win32-x86-3370000.db") #Database Created
+conn.execute("CREATE TABLE IF NOT EXISTS MOVIES (Sl_No INT PRIMARY KEY, NAME TEXT, Lead_Actor TEXT, Lead_Actress TEXT, "
+             "Year_of_Release INT, Director_Name TEXT);")
+conn.execute("INSERT INTO MOVIES (Sl_No, NAME, Lead_Actor, Lead_Actress, Year_of_Release, Director_Name) VALUES(01, "
+             "'Rang De Basanti', 'Aamir Khan', 'Soha Ali Khan', 2006, 'Rakeysh Omprakash Mehra')")
+conn.execute("INSERT INTO MOVIES (Sl_No, NAME, Lead_Actor, Lead_Actress, Year_of_Release, Director_Name) VALUES(02, "
+             "'Barfi', 'Ranbir Kapoor', 'Priyanka Chopra', 2012, 'Anurag Basu')")
+conn.execute("INSERT INTO MOVIES (Sl_No, NAME, Lead_Actor, Lead_Actress, Year_of_Release, Director_Name) VALUES(03, "
+             "'Interstellar', 'Matthew McConaughey', 'Jessica Chastain', 2014, 'Christopher Nolan')")
+conn.execute("INSERT INTO MOVIES (Sl_No, NAME, Lead_Actor, Lead_Actress, Year_of_Release, Director_Name) VALUES(04, "
+             "'3 Idiots', 'Aamir Khan', 'Kareena Kapoor', 2009, 'Rajkumar Hirani')")
+conn.execute("INSERT INTO MOVIES (Sl_No, NAME, Lead_Actor, Lead_Actress, Year_of_Release, Director_Name) VALUES(05, "
+             "'Inception', 'Leonardo DiCaprio', ' Marion Cotillard', 2010, 'Christopher Nolan')")
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM MOVIES")
+for row in cursor:
+    print(row)
+print("*"*8)
+cursor.execute("SELECT * FROM MOVIES WHERE Lead_Actor = 'Aamir Khan'")
+for row1 in cursor:
+    print(row1)
+conn.close()
